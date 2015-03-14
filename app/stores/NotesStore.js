@@ -7,7 +7,7 @@ var CHANGE_EVENT = 'change';
 
 var _state = {
   notes = []
-  market: '',
+  market_id: 0,
 };
 
 var addNote = function(note){
@@ -16,7 +16,7 @@ var addNote = function(note){
 
 var changeMarket = function(newMarketObj){
   _state = {
-    market: newMarketObj.market;
+    market_id: newMarketObj.market_id;
     notes: newMarketObj.notes;
   };
 };
