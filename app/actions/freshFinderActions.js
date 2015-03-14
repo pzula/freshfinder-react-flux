@@ -6,8 +6,10 @@ var freshFinderActions = {
   getMarket: function(market_id){
     freshFinderUtils.getMarket(market_id)
     .then(function(response){
-      actionType: appConstants.FRESHFINDER_MARKET_DATA,
-      data: response.data
+      AppDispatcher.handleAction({
+        actionType: appConstants.FRESHFINDER_MARKET_DATA,
+        data: response.data
+      })
     });
   },
   changeMarket: function(market_id){

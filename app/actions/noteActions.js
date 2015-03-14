@@ -13,10 +13,10 @@ var noteActions = {
   changeMarket: function(market_id){
     firebaseUtils.homeInstance().child(market_id).on('value', function(snapshot){
       AppDispatcher.handleAction({
-        actionType: appConstants.CHANGE_MARKET
+        actionType: appConstants.CHANGE_MARKET,
         data: {
           market_id: market_id,
-          notes: firebaseUtils.toArray(snapshot.val());
+          notes: firebaseUtils.toArray(snapshot.val())
         }
       });
     });

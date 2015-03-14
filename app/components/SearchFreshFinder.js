@@ -6,7 +6,7 @@ var SearchFreshFinder = React.createClass({
   handleSubmit: function(){
     var market_id = this.refs.market_id.getDOMNode().value;
     this.refs.market_id.getDOMNode().value = ''
-    this.transisitionTo('profile', { market_id: market_id });
+    this.transitionTo('market_profile', { market_id: market_id });
   },
   render: function(){
     return (
@@ -16,7 +16,7 @@ var SearchFreshFinder = React.createClass({
               <input type="text" className="form-control" ref="market_id" />
             </div>
             <div className="form-group col-sm-5">
-              <button type="submit" className="btn btn-block btn-primary">Search Github</button>
+              <button type="submit" className="btn btn-block btn-primary">Search FreshFinder</button>
             </div>
           </form>
         </div>

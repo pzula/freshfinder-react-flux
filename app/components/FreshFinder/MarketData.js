@@ -1,8 +1,8 @@
 var React = require('react');
-var freshFinderActions = require('../actions/freshFinderActions');
-var marketStore = require('../store/MarketStore');
+var freshFinderActions = require('../../actions/freshFinderActions');
+var marketStore = require('../../stores/MarketStore');
 
-var MarketData = React.CreateClass({
+var MarketData = React.createClass({
   getInitialState: function(){
     return {
       market_id: marketStore.getMarketId(),
@@ -32,9 +32,11 @@ var MarketData = React.CreateClass({
       <div>
         <h3> Market Profile </h3>
         <ul className="list-group">
-          {this.state.market_data.market.name <li className="list-group-item"> Name: {this.state.market_data.market.name} </li>}
+          {this.state.market_data}
         </ul>
       </div>
     )
   }
-};
+});
+
+module.exports = MarketData;

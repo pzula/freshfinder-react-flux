@@ -5,7 +5,7 @@ var MarketData = require('../components/FreshFinder/MarketData');
 var Notes = require('../components/Notes/Notes');
 
 var MarketProfile = React.createClass({
-  mixins: [ Router.State ];
+  mixins: [ Router.State ],
   render: function(){
     var market_id = this.getParams().market_id;
       return (

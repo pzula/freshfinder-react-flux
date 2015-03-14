@@ -6,8 +6,8 @@ var objectAssign = require('react/lib/Object.assign');
 var CHANGE_EVENT = 'change';
 
 var _state = {
-  notes = []
-  market_id: 0,
+  notes: [],
+  market_id: 0
 };
 
 var addNote = function(note){
@@ -16,8 +16,8 @@ var addNote = function(note){
 
 var changeMarket = function(newMarketObj){
   _state = {
-    market_id: newMarketObj.market_id;
-    notes: newMarketObj.notes;
+    market_id: newMarketObj.market_id,
+    notes: newMarketObj.notes
   };
 };
 
@@ -38,15 +38,15 @@ AppDispatcher.register(function(payload){
   switch(action.actionType){
     case appConstants.ADD_NOTE:
       addNote(action.data);
-      noteStore.emit(CHANGE_EVENT);
+      notesStore.emit(CHANGE_EVENT);
       break;
     case appConstants.CHANGE_MARKET:
       changeMarket(action.data);
-      noteStore.emit(CHANGE_EVENT);
+      notesStore.emit(CHANGE_EVENT);
       break;
     default:
       return true;
   }
 });
 
-module.exports = noteStore;
+module.exports = notesStore;
