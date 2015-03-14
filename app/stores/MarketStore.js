@@ -6,31 +6,16 @@ var objectAssign = require('react/lib/Object.assign');
 var CHANGE_EVENT = 'change';
 
 var _state = {
-  name: '',
-  address: {},
-  payment_types: [],
-  products: [],
-  seasons: []
+  market_id: 0,
+  market_data: {},
 };
 
-var newMarket = function(market_name){
-  _state.name = market_name;
+var newMarket = function(market_id){
+  _state.market_id = market_id;
 };
 
-var setAddress = function(address_data){
-  _state.address = address_data;
-};
-
-var setPaymentTypes = function(payment_data){
-  _state.payment_types = payment_data;
-};
-
-var setProducts = function(product_data){
-  _state.products = product_data;
-};
-
-var setSeasons = function(season_data){
-  _state.seasons = season_data;
+var setMarketData = function(data){
+  _state.market_data = data;
 };
 
 var marketStore = objectAssign({}, EventEmitter.prototype, {
@@ -40,40 +25,19 @@ var marketStore = objectAssign({}, EventEmitter.prototype, {
   removeChangeListener: function(cb){
     this.removeListener(CHANGE_EVENT, cb);
   },
-  getMarketName: function(){
-    return _state.name;
+  getMarketId: function(){
+    return _state.market_id;
   },
-  getMarketAddress: function(){
-    return _state.address;
-  },
-  getMarketPaymentTypes: function(){
-    return _state.payment_types;
-  },
-  getProducts: function(){
-    return _state.products;
-  },
-  getSeasons: function(){
-    return _state.seasons;
+  getMarketData: function(){
+    return _state.market_data;
   }
 });
 
 AppDispatcher.register(function(payload){
   var action = payload.action;
   switch(action.actionType){
-    case appConstants.FRESHFINDER_MARKET_ADDRESS:
-      setAddress(action.data);
-      marketStore.emit(CHANGE_EVENT);
-      break;
-    case appConstants.FRESHFINDER_MARKET_PAYMENT_TYPES:
-      setPaymentTypes(action.data);
-      marketStore.emit(CHANGE_EVENT);
-      break;
-    case appConstants.FRESHFINDER_MARKET_PRODUCTS:
-      setProducts(action.data);
-      marketStore.emit(CHANGE_EVENT);
-      break;
-    case appConstants.FRESHFINDER_MARKET_SEASONS:
-      setSeasons(action.data);
+    case appConstants.FRESHFINDER_MARKET_DATA:
+      setMarketData(action.data);
       marketStore.emit(CHANGE_EVENT);
       break;
     case appConstants.FRESHFINDER_CHANGE_MARKET:
