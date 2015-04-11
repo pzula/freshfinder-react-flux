@@ -7,7 +7,7 @@ var CHANGE_EVENT = 'change';
 
 var _state = {
   market_id: 0,
-  market_data: {},
+  market_data: {}
 };
 
 var newMarket = function(market_id){

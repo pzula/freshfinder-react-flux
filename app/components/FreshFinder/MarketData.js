@@ -6,7 +6,7 @@ var MarketData = React.createClass({
   getInitialState: function(){
     return {
       market_id: marketStore.getMarketId(),
-      market_data: marketStore.getMarketData
+      market_data: marketStore.getMarketData()
     }
   },
   componentWillReceiveProps: function(obj){
@@ -32,7 +32,7 @@ var MarketData = React.createClass({
       <div>
         <h3> Market Profile </h3>
         <ul className="list-group">
-          {this.state.market_data}
+          <li>{this.state.market_data}</li>
         </ul>
       </div>
     )
